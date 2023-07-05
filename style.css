@@ -1,0 +1,33 @@
+#title{
+    margin: 0;
+	color: lawngreen;
+	background: blueviolet;
+	font-size: 85px;
+	padding: 5px;
+	font-weight: bold;
+  	text-align: center;
+}
+
+#score{
+	float: right;
+	margin: 0;
+	width: 180px;
+	background: blueviolet;
+	font-size: 40px;
+	padding: 50px 0;
+  	text-align: center;
+}
+
+#cursor{
+	position: absolute;
+	margin: 0;
+	opacity: 0;
+}
+
+#combined{
+	position: absolute;
+	margin: 0;
+	opacity: 0;
+}
+
+
