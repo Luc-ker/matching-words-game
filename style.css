@@ -30,4 +30,8 @@
 	opacity: 0;
 }
 
-
+#timer{
+	position: absolute;
+	margin: 0;
+	opacity: 0;	
+}
