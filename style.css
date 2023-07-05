@@ -3,8 +3,9 @@
 	color: lawngreen;
 	background: blueviolet;
 	font-size: 85px;
-	padding: 5px;
+	padding-bottom: 5px;
 	font-weight: bold;
+  	text-align: center;
 }
 
 #score{
