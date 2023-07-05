@@ -111,20 +111,46 @@ function setPos(id,left,top){
 	d.style.top = top+'px';
 }
 
-
 function setTimer() {
-  timeout = setTimeout(alertFunc, 60000);
+	document.getElementById("score").innerHTML = "分數: 0";
+	document.getElementById("start_grid").style.display = "none";
+	document.getElementById("start_button").style.display = "none";
+	document.getElementById("cursor").style.display = "block";
+	document.getElementById("combined").style.opacity = 0;
+	for (let i = 1; i < 17; i++) {
+		changeImage(`image${i}`)
+	}
+	countdown();
 }
 
 function alertFunc() {
-  alert("Hello!");
+	document.getElementById("start_button").style.display = "block";
+	document.getElementById("start_grid").style.display = "block";
+	document.getElementById("cursor").style.display = "none";
+  alert("Game Over!");
 }
 
+function countdown() {
+  var seconds = 121;
+  function tick() {
+    var timer = document.getElementById("timer");
+    seconds--;
+    timer.innerHTML = `時間: ${Math.floor(seconds/60)}:${seconds%60 < 10 ? "0" : ""}${seconds%60}`;
+    if (seconds > -1) {
+      setTimeout(tick, 1000);
+    }
+    if (seconds === -1) {
+      document.getElementById("timer").innerHTML = "";
+      alertFunc()
+    }
+  }
+  tick();
+}
 
 for (let i = 1; i < 17; i++) {
-	changeImage(`image${i}`)
 	document.getElementById(`image${i}`).addEventListener("click",function(){doSomething(`#image${i}`,combo,combos)});
 }
 
+setPos("timer",550,200)
 setPos("combined",580,254)
 setPos("score",550,378)

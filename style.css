@@ -33,5 +33,31 @@
 #timer{
 	position: absolute;
 	margin: 0;
-	opacity: 0;	
+	font-size: 40px;
 }
+
+#start_grid {
+	height: 520px;
+	width: 500px;
+	margin: 0;
+	position: absolute;
+	border: 3px solid #f44336;
+	background-color: grey;
+}
+
+#center {
+	margin: 0;
+	position: absolute;
+	top: 50%;
+	left: 40%;
+	-ms-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
+
+#start_button{
+	background-color: #4CAF50;
+	border: 3px solid #f44336;
+	font-size: 24px;
+	padding: 16px 32px;
+}
+
