@@ -1,30 +1,34 @@
 var combos={
-	"also": ["mouth","person","woman"],
-	"day": ["day","moon"],
-	"horse": ["mouth","person","woman"],
-	"moon": ["day","moon"],
-	"mouth": ["also","horse","mouth","person","woman","wood"],
-	"one": ["one","two","wood"],
-	"person": ["also","horse","mouth","son","two","wood"],
+	"also": ["person","woman"],
+	"day": ["day","door","moon"],
+	"door": ["day","moon","mouth","one","person","wood"],
+	"horse": ["mouth","woman"],
+	"moon": ["day","door","moon"],
+	"mouth": ["door","horse","ten","woman","wood"],
+	"one": ["door","one","ten","two","wood"],
+	"person": ["also","door","son","ten","two","wood"],
 	"son": ["person","woman","wood"],
+	"ten": ["mouth","one","person"],
 	"two": ["one","person"],
 	"woman": ["also","horse","mouth","son"],
-	"wood": ["mouth","one","person","son","wood"]
-}
+	"wood": ["door","mouth","one","person","son","wood"]
+};
 
-var combo = []
+var combo = [];
+
+var timeout;
 
 function changeImage(image){
-	images = ["also","day","horse","moon","mouth","one","person","son","two","woman","wood"]
+	images = ["also","day","door","horse","moon","mouth","one","person","son","ten","two","woman","wood"];
 	let newImage = images[getRndInteger(0,images.length-1)];
 	document.getElementById(image).src=`./images/${newImage}.png`
 	console.log(newImage);
 }
 
 function changeImage2(image){
-	images = ["also","day","horse","moon","mouth","one","person","son","two","woman","wood"]
+	images = ["also","day","door","horse","moon","mouth","one","person","son","ten","two","woman","wood"];
 	let newImage = images[getRndInteger(0,images.length-1)];
-	document.querySelector(image).src=`./images/${newImage}.png`
+	document.querySelector(image).src=`./images/${newImage}.png`;
 	console.log(newImage);
 }
 
@@ -46,10 +50,10 @@ function sound(src) {
 var mySound = new sound("audio/ding.ogg");
 
 function increaseScore(){
-	mySound.play()
-	var score = Number(document.getElementById("score").innerHTML.slice(3))
-	score = score + 1
-	document.getElementById("score").innerHTML = "分數: " + String(score)
+	mySound.play();
+	var score = Number(document.getElementById("score").innerHTML.slice(3));
+	score = score + 1;
+	document.getElementById("score").innerHTML = "分數: " + String(score);
 }
 
 function placeCursor(image) {
@@ -58,8 +62,8 @@ function placeCursor(image) {
 	let rect = elem.getBoundingClientRect();
 	d.style.left = rect["x"]+'px';
 	d.style.top = rect["y"]+'px';
-	d.style.opacity = 1
-	console.log(rect)
+	d.style.opacity = 1;
+	console.log(rect);
 }
 
 function getRndInteger(min, max) {
@@ -67,21 +71,21 @@ function getRndInteger(min, max) {
 }
 
 function changeCombined(image){
-	var d = document.getElementById("combined")
-	d.src=`./images/${image}.png`
-	d.style.opacity = 1
+	var d = document.getElementById("combined");
+	d.src=`./images/${image}.png`;
+	d.style.opacity = 1;
 	console.log(image);
 }
 
 function getWord(image,arr){
 	let path = document.querySelector(image).src;
-	var word = path.slice(0,-4).split("/").pop()
+	var word = path.slice(0,-4).split("/").pop();
 	arr.push([image,word]);
 	console.log(image,word);
 }
 
 function logCombo(arr){
-	console.log(arr[0],arr[1])
+	console.log(arr[0],arr[1]);
 }
 
 function doSomething(image,arr,combos){
@@ -93,7 +97,7 @@ function doSomething(image,arr,combos){
 			increaseScore();
 			changeImage2(arr[0][0]);
 			changeImage2(arr[1][0]);
-			changeCombined(`${[arr[0][1],arr[1][1]].sort().join("")}`)
+			changeCombined(`${[arr[0][1],arr[1][1]].sort().join("")}`);
 		}
 		arr.length = 0;
 		console.log(arr);
@@ -105,6 +109,15 @@ function setPos(id,left,top){
 	d.style.position = "absolute";
 	d.style.left = left+'px';
 	d.style.top = top+'px';
+}
+
+
+function setTimer() {
+  timeout = setTimeout(alertFunc, 60000);
+}
+
+function alertFunc() {
+  alert("Hello!");
 }
 
 
