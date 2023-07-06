@@ -2,10 +2,11 @@
     margin: 0;
 	color: lawngreen;
 	background: blueviolet;
-	font-size: 85px;
 	padding-bottom: 5px;
+	padding-left: 117px;
 	font-weight: bold;
   	text-align: center;
+	font-size: 85px;
 }
 
 #score{
@@ -61,3 +62,12 @@
 	padding: 16px 32px;
 }
 
+#puzzle_piece{
+	margin: 0;
+	position: absolute;
+}
+
+#puzzle_piece2{
+	position: relative;
+	float: right;
+}
