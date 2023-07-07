@@ -9,22 +9,19 @@
 	<body>
 		<div>
 			<img id="puzzle_piece" title="image" src="./images/puzzle piece.png" width="90" height="90">
-			<div id="title">
-				砌字遊戲 (Chinese Word Puzzle)
-				<img id="puzzle_piece2" title="image" src="./images/puzzle piece.png" width="90" height="90">
-			</div>
+			<div id="title">砌字遊戲 (Chinese Word Puzzle)</div>
 		</div>
 		<div>
 			<div id="start_grid">
 				<div id="center">
-					<button id="start_button" onclick="setTimer()">開始</button>
+					<button id="start_button" onclick="setTimer()">開始 (Start)</button>
 				</div>
 			</div>
 			<img id="image1" title="image" src="./images/wood.png" width="120" height="120">
 			<img id="image2" title="image" src="./images/wood.png" width="120" height="120">
 			<img id="image3" title="image" src="./images/wood.png" width="120" height="120">
 			<img id="image4" title="image" src="./images/wood.png" width="120" height="120">
-			<div class="object" id="level"> (Level): 1</div>
+			<div class="object" id="level">等級 (Level): 1</div>
 			<div class="object" id="timer">時間 (Time): 3:00</div>
 			<br>
 		</div>
@@ -54,7 +51,14 @@
 			<br>
 		</div>
 		<div>
-			<div id="rules">
+			<div class="rules" id="rules">
+				遊戲規則 (Rules):<br>
+				• Select two Chinese characters to create a word<br>
+				• If correct, you gain a point<br>
+				• There are 5 levels - to progress to the next level you need 5, 10, 15 and 20 points respectively<br>
+				• Level 5 is an "Endless Mode" where you will try and obtain as many points as possible within your remaining time
+			</div>
+			<div class="rules" id="rules2">
 				遊戲規則 (Rules):<br>
 				• Select two Chinese characters to create a word<br>
 				• If correct, you gain a point<br>
