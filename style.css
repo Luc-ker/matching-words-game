@@ -6,17 +6,11 @@
 	padding-left: 117px;
 	font-weight: bold;
   	text-align: center;
-	font-size: 85px;
+	font-size: 65px;
 }
 
-#score{
-	float: right;
-	margin: 0;
-	width: 180px;
-	background: blueviolet;
-	font-size: 40px;
-	padding: 50px 0;
-  	text-align: center;
+body{
+	background-color: #DBF9FC;
 }
 
 #cursor{
@@ -31,15 +25,17 @@
 	opacity: 0;
 }
 
-#timer{
-	position: absolute;
+.object{
 	margin: 0;
+	width: 240px;
 	font-size: 40px;
+  	text-align: center;
+	border: 3px solid #f44336;
 }
 
 #start_grid {
-	height: 520px;
-	width: 500px;
+	height: 490px;
+	width: 490px;
 	margin: 0;
 	position: absolute;
 	border: 3px solid #f44336;
@@ -55,7 +51,7 @@
 	transform: translateY(-50%);
 }
 
-#start_button{
+button{
 	background-color: #4CAF50;
 	border: 3px solid #f44336;
 	font-size: 24px;
@@ -70,4 +66,16 @@
 #puzzle_piece2{
 	position: relative;
 	float: right;
+}
+
+#rules{
+	font-size: 24px;
+	border: 3px solid #f44336;
+	padding-left: 10px;
+	padding-bottom: 5px;
+	width: 700px;
+}
+
+#bgm{
+	display: none;
 }

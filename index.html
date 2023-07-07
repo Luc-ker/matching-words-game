@@ -6,49 +6,65 @@
 		<title>Matching Words Game</title>
 		<link rel="stylesheet" href="./style.css">
 	</head>
-	<div>
-		<img id="puzzle_piece" title="image" src="./images/puzzle piece.png" width="117" height="117">
-		<div id="title">
-			砌字遊戲
-			<img id="puzzle_piece2" title="image" src="./images/puzzle piece.png" width="117" height="117">
-		</div>
-	</div>
 	<body>
-		<div id="start_grid">
-			<div id="center">
-				<button id="start_button" onclick="setTimer()">開始</button>
+		<div>
+			<img id="puzzle_piece" title="image" src="./images/puzzle piece.png" width="90" height="90">
+			<div id="title">
+				砌字遊戲 (Chinese Word Puzzle)
+				<img id="puzzle_piece2" title="image" src="./images/puzzle piece.png" width="90" height="90">
 			</div>
 		</div>
-		<img id="image1" title="image" src="./images/wood.png" width="120" height="120">
-		<img id="image2" title="image" src="./images/wood.png" width="120" height="120">
-		<img id="image3" title="image" src="./images/wood.png" width="120" height="120">
-		<img id="image4" title="image" src="./images/wood.png" width="120" height="120">
-		<div id="timer">時間: 2:00</div>
-		<br>
+		<div>
+			<div id="start_grid">
+				<div id="center">
+					<button id="start_button" onclick="setTimer()">開始</button>
+				</div>
+			</div>
+			<img id="image1" title="image" src="./images/wood.png" width="120" height="120">
+			<img id="image2" title="image" src="./images/wood.png" width="120" height="120">
+			<img id="image3" title="image" src="./images/wood.png" width="120" height="120">
+			<img id="image4" title="image" src="./images/wood.png" width="120" height="120">
+			<div class="object" id="level"> (Level): 1</div>
+			<div class="object" id="timer">時間 (Time): 3:00</div>
+			<br>
+		</div>
+		<div>
+			<img id="image5" title="image" src="./images/wood.png" width="120" height="120">
+			<img id="image6" title="image" src="./images/wood.png" width="120" height="120">
+			<img id="image7" title="image" src="./images/wood.png" width="120" height="120">
+			<img id="image8" title="image" src="./images/wood.png" width="120" height="120">
+			<img id="combined" title="image" src="./images/wood.png" width="120" height="120">
+			<br>
+		</div>
+		<div>
+			<img id="image9" title="image" src="./images/wood.png" width="120" height="120">
+			<img id="image10" title="image" src="./images/wood.png" width="120" height="120">
+			<img id="image11" title="image" src="./images/wood.png" width="120" height="120">
+			<img id="image12" title="image" src="./images/wood.png" width="120" height="120">
+			<div class="object" id="score">分數 (Score): 0</div>
+			<div id="reset_button"><button onclick="resetBoard()">Reset Board</button></div>
+			<br>
+		</div>
+		<div>
+			<img id="cursor" title="image" src="./images/cursor.png" width="120" height="120">
+			<img id="image13" title="image" src="./images/wood.png" width="120" height="120">
+			<img id="image14" title="image" src="./images/wood.png" width="120" height="120">
+			<img id="image15" title="image" src="./images/wood.png" width="120" height="120">
+			<img id="image16" title="image" src="./images/wood.png" width="120" height="120">
+			<br>
+		</div>
+		<div>
+			<div id="rules">
+				遊戲規則 (Rules):<br>
+				• Select two Chinese characters to create a word<br>
+				• If correct, you gain a point<br>
+				• There are 5 levels - to progress to the next level you need 5, 10, 15 and 20 points respectively<br>
+				• Level 5 is an "Endless Mode" where you will try and obtain as many points as possible within your remaining time
+			</div>
+		</div>
 	</body>
-	<body>
-		<img id="image5" title="image" src="./images/wood.png" width="120" height="120">
-		<img id="image6" title="image" src="./images/wood.png" width="120" height="120">
-		<img id="image7" title="image" src="./images/wood.png" width="120" height="120">
-		<img id="image8" title="image" src="./images/wood.png" width="120" height="120">
-		<img id="combined" title="image" src="./images/wood.png" width="120" height="120">
-		<br>
-	</body>
-	<body>
-		<img id="image9" title="image" src="./images/wood.png" width="120" height="120">
-		<img id="image10" title="image" src="./images/wood.png" width="120" height="120">
-		<img id="image11" title="image" src="./images/wood.png" width="120" height="120">
-		<img id="image12" title="image" src="./images/wood.png" width="120" height="120">
-		<div id="score">分數: 0</div>
-		<br>
-	</body>
-	<body>
-		<img id="cursor" title="image" src="./images/cursor.png" width="120" height="120">
-		<img id="image13" title="image" src="./images/wood.png" width="120" height="120">
-		<img id="image14" title="image" src="./images/wood.png" width="120" height="120">
-		<img id="image15" title="image" src="./images/wood.png" width="120" height="120">
-		<img id="image16" title="image" src="./images/wood.png" width="120" height="120">
-		<br>
-	</body>
+	<audio id="bgm" controls loop>
+		<source src="./audio/4-01-Mods_de_Chocobo.mp3" type="audio/mp3">
+	</audio>
 <html>
 <script src="./script.js"></script>

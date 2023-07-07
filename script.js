@@ -1,8 +1,8 @@
 var combos={
-	"also": ["person","woman"],
+	"also": ["horse","person","woman"],
 	"day": ["day","door","moon"],
-	"door": ["day","moon","mouth","one","person","wood"],
-	"horse": ["mouth","woman"],
+	"door": ["day","horse","moon","mouth","one","person","wood"],
+	"horse": ["also","door","mouth","woman"],
 	"moon": ["day","door","moon"],
 	"mouth": ["door","horse","ten","woman","wood"],
 	"one": ["door","one","ten","two","wood"],
@@ -14,8 +14,14 @@ var combos={
 	"wood": ["door","mouth","one","person","son","wood"]
 };
 
-var combo = [];
+var clears={
+	1: 5,
+	2: 15,
+	3: 30,
+	4: 50
+}
 
+var combo = [];
 var timeout;
 
 function changeImage(image){
@@ -47,13 +53,22 @@ function sound(src) {
   }
 }
 
-var mySound = new sound("audio/ding.ogg");
+var ding = new sound("audio/ding.ogg");
+var levelUpSound = new sound("audio/level up.mp3");
+/*var bgMusic = new sound("audio/4-01-Mods_de_Chocobo.mp3");*/
 
 function increaseScore(){
-	mySound.play();
-	var score = Number(document.getElementById("score").innerHTML.slice(3));
-	score = score + 1;
-	document.getElementById("score").innerHTML = "分數: " + String(score);
+	ding.play();
+	var score = Number(document.getElementById("score").innerHTML.slice(11));
+	document.getElementById("score").innerHTML = "分數 (Score): " + String(score+1);
+	return score+1;
+}
+
+function levelUp(){
+	levelUpSound.play();
+	var level = Number(document.getElementById("level").innerHTML.slice(10));
+	document.getElementById("level").innerHTML = " (Level): " + String(level+1);
+	alert(`You are now at level ${level+1}!`);
 }
 
 function placeCursor(image) {
@@ -94,10 +109,15 @@ function doSomething(image,arr,combos){
 	logCombo(arr);
 	if (arr.length === 2){
 		if (combos[arr[0][1]].includes(arr[1][1])){
-			increaseScore();
+			var score = increaseScore();
+			console.log(score);
+			var level = Number(document.getElementById("level").innerHTML.slice(10));
 			changeImage2(arr[0][0]);
 			changeImage2(arr[1][0]);
 			changeCombined(`${[arr[0][1],arr[1][1]].sort().join("")}`);
+			if (clears[level] === score){
+				levelUp();
+			}
 		}
 		arr.length = 0;
 		console.log(arr);
@@ -112,45 +132,65 @@ function setPos(id,left,top){
 }
 
 function setTimer() {
-	document.getElementById("score").innerHTML = "分數: 0";
+	resetBoard()
+	document.getElementById("bgm").play()
+	document.getElementById("score").innerHTML = "分數 (Score): 0";
 	document.getElementById("start_grid").style.display = "none";
 	document.getElementById("start_button").style.display = "none";
 	document.getElementById("cursor").style.display = "block";
 	document.getElementById("combined").style.opacity = 0;
-	for (let i = 1; i < 17; i++) {
-		changeImage(`image${i}`)
-	}
 	countdown();
 }
 
-function alertFunc() {
+function backToStart(){
 	document.getElementById("start_button").style.display = "block";
 	document.getElementById("start_grid").style.display = "block";
 	document.getElementById("cursor").style.display = "none";
+}
+
+function alertFunc() {
   alert("Game Over!");
 }
 
 function countdown() {
-  var seconds = 121;
+  var seconds = 181;
   function tick() {
     var timer = document.getElementById("timer");
     seconds--;
-    timer.innerHTML = `時間: ${Math.floor(seconds/60)}:${seconds%60 < 10 ? "0" : ""}${seconds%60}`;
+    timer.innerHTML = `時間 (Time): ${Math.floor(seconds/60)}:${seconds%60 < 10 ? "0" : ""}${seconds%60}`;
     if (seconds > -1) {
-      setTimeout(tick, 1000);
+      const counter = setTimeout(tick, 1000);
     }
     if (seconds === -1) {
-      document.getElementById("timer").innerHTML = "";
+      document.getElementById("timer").innerHTML = "時間 (Time): 0:00";
+    	backToStart()
       alertFunc()
     }
   }
   tick();
 }
 
+function resetBoard(){
+	for (let i = 1; i < 17; i++) {
+		changeImage(`image${i}`)
+	}
+}
+
+document.getElementById("bgm").addEventListener('ended', function() {
+    this.currentTime = 0;
+    this.play();
+}, false);
+document.getElementById("bgm").loop = true
+
+resetBoard()
 for (let i = 1; i < 17; i++) {
 	document.getElementById(`image${i}`).addEventListener("click",function(){doSomething(`#image${i}`,combo,combos)});
 }
+setPos("level",510,100)
+setPos("rules",770,100)
+setPos("timer",510,208)
+setPos("combined",572,316)
+setPos("score",510,440)
+setPos("reset_button",510,560)
 
-setPos("timer",550,200)
-setPos("combined",580,254)
-setPos("score",550,378)
+
