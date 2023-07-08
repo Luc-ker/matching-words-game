@@ -187,10 +187,10 @@ for (let i = 1; i < 17; i++) {
 	document.getElementById(`image${i}`).addEventListener("click",function(){doSomething(`#image${i}`,combo,combos)});
 }
 setPos("level",510,176)
-setPos("rules",770,176)
+setPos("rules",762,176)
 setPos("timer",510,284)
 setPos("combined",572,392)
-setPos("rules2",770,390)
+setPos("rules2",762,390)
 setPos("score",510,516)
 setPos("reset_button",510,626)
 
