@@ -1,12 +1,13 @@
 #title{
     margin: 0;
+    width: 91%;
 	color: lawngreen;
 	background: blueviolet;
-	padding-bottom: 5px;
-	padding-left: 117px;
+	padding-bottom: 0.5%;
+	padding-left: 9%;
 	font-weight: bold;
   	text-align: center;
-	font-size: 65px;
+	font-size: 400%;
 }
 
 body{
