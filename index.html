@@ -8,48 +8,49 @@
 	</head>
 	<body>
 		<div>
-			<img id="puzzle_piece" title="image" src="./images/puzzle piece.png" width="9%" height="12%">
+			<img id="puzzle_piece" title="image" src="./images/puzzle piece.png">
 			<div id="title">砌字遊戲 (Chinese Word Puzzle)</div>
+			<img id="puzzle_piece2" title="image" src="./images/puzzle piece.png">
 		</div>
-		<div>
+		<div class="row">
 			<div id="start_grid">
 				<div id="center">
 					<button id="start_button" onclick="setTimer()">開始 (Start)</button>
 				</div>
 			</div>
-			<img id="image1" title="image" src="./images/wood.png" width="8.18%" height="120">
-			<img id="image2" title="image" src="./images/wood.png" width="8.18%" height="120">
-			<img id="image3" title="image" src="./images/wood.png" width="8.18%" height="120">
-			<img id="image4" title="image" src="./images/wood.png" width="8.18%" height="120">
-			<div class="object" id="level">等級 (Level): 1</div>
-			<div class="object" id="timer">時間 (Time): 3:00</div>
+			<img id="image1" title="image" src="./images/blank.png" width="120" height="120">
+			<img id="image2" title="image" src="./images/blank.png" width="120" height="120">
+			<img id="image3" title="image" src="./images/blank.png" width="120" height="120">
+			<img id="image4" title="image" src="./images/blank.png" width="120" height="120">
+			<span class="object" id="level">等級 (Level): 1</span>
 			<br>
 		</div>
-		<div>
-			<img id="image5" title="image" src="./images/wood.png" width="120" height="120">
-			<img id="image6" title="image" src="./images/wood.png" width="120" height="120">
-			<img id="image7" title="image" src="./images/wood.png" width="120" height="120">
-			<img id="image8" title="image" src="./images/wood.png" width="120" height="120">
-			<img id="combined" title="image" src="./images/wood.png" width="120" height="120">
+		<div class="row">
+			<img id="image5" title="image" src="./images/blank.png" width="120" height="120">
+			<img id="image6" title="image" src="./images/blank.png" width="120" height="120">
+			<img id="image7" title="image" src="./images/blank.png" width="120" height="120">
+			<img id="image8" title="image" src="./images/blank.png" width="120" height="120">
+			<span class="object" id="timer">時間 (Time): 3:00</span>
 			<br>
 		</div>
-		<div>
-			<img id="image9" title="image" src="./images/wood.png" width="120" height="120">
-			<img id="image10" title="image" src="./images/wood.png" width="120" height="120">
-			<img id="image11" title="image" src="./images/wood.png" width="120" height="120">
-			<img id="image12" title="image" src="./images/wood.png" width="120" height="120">
-			<div class="object" id="score">分數 (Score): 0</div>
-			<div id="reset_button"><button onclick="resetBoard()">復位板 (Reset Board)</button></div>
+		<div class="row">
+			<img id="image9" title="image" src="./images/blank.png" width="120" height="120">
+			<img id="image10" title="image" src="./images/blank.png" width="120" height="120">
+			<img id="image11" title="image" src="./images/blank.png" width="120" height="120">
+			<img id="image12" title="image" src="./images/blank.png" width="120" height="120">
+			<img id="combined" title="image" src="./images/blank.png" width="120" height="120">
 			<br>
 		</div>
-		<div>
+		<div class="row">
 			<img id="cursor" title="image" src="./images/cursor.png" width="120" height="120">
-			<img id="image13" title="image" src="./images/wood.png" width="120" height="120">
-			<img id="image14" title="image" src="./images/wood.png" width="120" height="120">
-			<img id="image15" title="image" src="./images/wood.png" width="120" height="120">
-			<img id="image16" title="image" src="./images/wood.png" width="120" height="120">
+			<img id="image13" title="image" src="./images/blank.png" width="120" height="120">
+			<img id="image14" title="image" src="./images/blank.png" width="120" height="120">
+			<img id="image15" title="image" src="./images/blank.png" width="120" height="120">
+			<img id="image16" title="image" src="./images/blank.png" width="120" height="120">
+			<span class="object" id="score">分數 (Score): 0</span>
 			<br>
 		</div>
+		<div><button id="reset_button" onclick="resetBoard()">復位板 (Reset Board)</button></div>
 		<div>
 			<div class="rules" id="rules">
 				遊戲規則:<br>

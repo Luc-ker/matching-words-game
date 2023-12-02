@@ -66,8 +66,8 @@ function increaseScore(){
 
 function levelUp(){
 	levelUpSound.play();
-	var level = Number(document.getElementById("level").innerHTML.slice(10));
-	document.getElementById("level").innerHTML = " (Level): " + String(level+1);
+	var level = Number(document.getElementById("level").innerHTML.slice(12));
+	document.getElementById("level").innerHTML = "等級 (Level): " + String(level+1);
 	alert(`You are now at level ${level+1}!`);
 }
 
@@ -100,27 +100,28 @@ function getWord(image,arr){
 }
 
 function logCombo(arr){
-	console.log(arr[0],arr[1]);
+	console.log(arr[arr.length-2],arr[arr.length-1]);
 }
 
 function doSomething(image,arr,combos){
 	placeCursor(image);
 	getWord(image,arr);
 	logCombo(arr);
-	if (arr.length === 2){
-		if (combos[arr[0][1]].includes(arr[1][1])){
+	if (arr.length >= 2){
+		if (combos[arr[arr.length-2][1]].includes(arr[arr.length-1][1])){
 			var score = increaseScore();
 			console.log(score);
-			var level = Number(document.getElementById("level").innerHTML.slice(10));
-			changeImage2(arr[0][0]);
-			changeImage2(arr[1][0]);
-			changeCombined(`${[arr[0][1],arr[1][1]].sort().join("")}`);
-			if (clears[level] === score){
+			var level = Number(document.getElementById("level").innerHTML.slice(12));
+			console.log(level)
+			changeImage2(arr[arr.length-2][0]);
+			changeImage2(arr[arr.length-1][0]);
+			changeCombined(`${[arr[arr.length-2][1],arr[arr.length-1][1]].sort().join("")}`);
+			arr.length = 0;
+			if (score === clears[level]){
 				levelUp();
 			}
 		}
-		arr.length = 0;
-		console.log(arr);
+	console.log(arr);
 	}
 }
 
@@ -186,12 +187,4 @@ resetBoard()
 for (let i = 1; i < 17; i++) {
 	document.getElementById(`image${i}`).addEventListener("click",function(){doSomething(`#image${i}`,combo,combos)});
 }
-setPos("level",510,176)
-setPos("rules",762,176)
-setPos("timer",510,284)
-setPos("combined",572,392)
-setPos("rules2",762,390)
-setPos("score",510,516)
-setPos("reset_button",510,626)
-
 
