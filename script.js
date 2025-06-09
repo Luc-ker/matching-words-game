@@ -50,6 +50,12 @@ document.getElementById("bgm").addEventListener('ended', function() {
 false);
 document.getElementById("bgm").loop = true;
 
+document.getElementById("mute").addEventListener('click', function() {
+        document.getElementById("bgm").muted = !document.getElementById("bgm").muted;
+        document.getElementById("volume-img").src = document.getElementById("bgm").muted ? "images/volume-mute-fill.png" : "images/volume-up-fill.png";
+    }
+);
+
 // Variable-related functions
 function increaseScore() {
 	ding.play();
