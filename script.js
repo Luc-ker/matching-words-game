@@ -51,14 +51,22 @@ false);
 document.getElementById("bgm").loop = true;
 
 document.getElementById("mute").addEventListener('click', function() {
-        document.getElementById("bgm").muted = !document.getElementById("bgm").muted;
-        document.getElementById("volume-img").src = document.getElementById("bgm").muted ? "images/volume-mute-fill.png" : "images/volume-up-fill.png";
+        const newStatus = !document.getElementById("bgm").muted;
+        updateSoundElements(newStatus);
     }
 );
 
+function updateSoundElements(newStatus) {
+    document.getElementById("bgm").muted = newStatus;
+    document.getElementById("volume-img").src = newStatus ? "images/volume-mute-fill.png" : "images/volume-up-fill.png";
+    document.cookie = `mute=${newStatus}; path=/;`;
+}
+
 // Variable-related functions
 function increaseScore() {
-	ding.play();
+    if (!document.getElementById("bgm").muted) {
+        ding.play();
+    }
     score ++;
 	updateScoreDisplay();
 }
@@ -221,7 +229,21 @@ function endGame() {
 	document.getElementById("reset_button").style.display = "none";
 	document.getElementById("end_button").style.display = "none";
 	document.getElementById("combined").style.display = "none";
-    alert("Game Over!\nYour final score is: " + score);
+    var highScore = getHighScoreCookie();
+    if (typeof highScore == 0) {
+        highScoreString = "New high score!";
+        document.cookie = `highScore=${score}; path=/;`;
+    } else {
+        if (score > highScore) {
+            highScoreString = `You beat your previous high score of ${highScore}!`;
+            document.cookie = `highScore=${score}; path=/;`;
+        } else if (score == highScore) {
+            highScoreString = "You tied your previous high score!";
+        } else {
+            highScoreString = `Your highest score is: ${highScore}`;
+        }
+    }
+    alert(`Game Over!\nYour final score is: ${score}\n${highScoreString}`);
     currentImage = -1;
     score = 0;
     level = 1;
@@ -239,6 +261,35 @@ function startGame() {
 	countdown();
 }
 
+// Cookie functions
+function getCookie(cname) {
+    const cookieValue = document.cookie
+        .split("; ")
+        .find((row) => row.startsWith(`${cname}=`))
+        ?.split("=")[1];
+    return cookieValue;
+}
+
+function getMuteCookie() {
+    var mute = getCookie("mute");
+    if (mute == "true") {
+        mute = true;
+    } else {
+        mute = false;
+    }
+    return mute;
+}
+
+function getHighScoreCookie() {
+    var highScore = getCookie("highScore");
+    if (typeof highScore === "undefined") {
+        highScore = 0;
+    } else {
+        highScore = Number(highScore);
+    }
+    return highScore;
+}
+
 // Driver Code
 // Add event listeners to each image element
 document.getElementById("start_button").addEventListener("click", function() {
@@ -250,3 +301,6 @@ var currentImage = -1;
 var score = 0;
 var level = 1;
 var running = false;
+var mute = getMuteCookie();
+var highScore = getHighScoreCookie();
+updateSoundElements(mute);  // true = muted, false = sound on
