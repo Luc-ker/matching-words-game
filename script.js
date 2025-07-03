@@ -59,7 +59,7 @@ document.getElementById("mute").addEventListener('click', function() {
 function updateSoundElements(newStatus) {
     document.getElementById("bgm").muted = newStatus;
     document.getElementById("volume-img").src = newStatus ? "images/volume-mute-fill.png" : "images/volume-up-fill.png";
-    document.cookie = `mute=${newStatus}; path=/;`;
+    document.cookie = `mute=${newStatus}; max-age=31536000; path=/;`;
 }
 
 // Variable-related functions
@@ -232,11 +232,11 @@ function endGame() {
     var highScore = getHighScoreCookie();
     if (typeof highScore == 0) {
         highScoreString = "New high score!";
-        document.cookie = `highScore=${score}; path=/;`;
+        document.cookie = `highScore=${score}; max-age=31536000; path=/;`;
     } else {
         if (score > highScore) {
             highScoreString = `You beat your previous high score of ${highScore}!`;
-            document.cookie = `highScore=${score}; path=/;`;
+            document.cookie = `highScore=${score}; max-age=31536000; path=/;`;
         } else if (score == highScore) {
             highScoreString = "You tied your previous high score!";
         } else {
